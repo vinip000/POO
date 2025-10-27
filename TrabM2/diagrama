@@ -1,0 +1,44 @@
+@startuml
+
+class Livro {
+    -titulo: String
+    -autor: Autor
+    -emprestado: boolean
+    +getTitulo(): String
+    +getAutor(): Autor
+    +isEmprestado(): boolean
+    +emprestar(): void
+    +devolver(): void
+}
+
+class Usuario {
+    -nome: String
+    -id: int
+    +getNome(): String
+    +getId(): int
+}
+
+class Autor {
+    -nome: String
+    -biografia: String
+    +getNome(): String
+    +getBiografia(): String
+}
+
+class Emprestimo {
+    -livro: Livro
+    -usuario: Usuario
+    -dataEmprestimo: Date
+    -dataDevolucao: Date
+    +getLivro(): Livro
+    +getUsuario(): Usuario
+    +getDataEmprestimo(): Date
+    +setDataEmprestimo(data: Date): void
+    +getDataDevolucao(): Date
+    +setDataDevolucao(data: Date): void
+}
+
+Usuario "1" -- "*" Emprestimo : realiza
+Emprestimo "1" -- "1" Livro : envolve
+
+@enduml
